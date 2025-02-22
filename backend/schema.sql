@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS questions;
 
 CREATE TABLE IF NOT EXISTS questions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -6,5 +6,6 @@ CREATE TABLE IF NOT EXISTS questions (
     answer TEXT NOT NULL,
     class_name TEXT NOT NULL,
     topic TEXT NOT NULL,
+    difficulty TEXT CHECK(difficulty IN ('Easy', 'Medium', 'Hard')) DEFAULT 'Medium',
     image TEXT  -- Store image filename
 );

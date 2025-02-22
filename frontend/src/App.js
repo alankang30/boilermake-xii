@@ -6,6 +6,8 @@ import HomePage from './pages/Home.js'
 import ClassesPage from './pages/Classes.js'
 import AboutPage from './pages/About.js'
 import FeedbackPage from './pages/Feedback.js'
+import AddQuestionPage from './pages/AddQuestion.js';
+import QuestionsPage from './pages/Questions.js';
 
 import ClassPage from './components/ui/ClassPage.js'
 
@@ -30,6 +32,8 @@ function App() {
         <Route path='/feedback' element={<FeedbackPage/>}/>
         <Route path='/classes' element={<ClassesPage/>}/>
         <Route path='/classes/cs240' element={<ClassPage/>}/>
+        <Route path='/add' element={<AddQuestionPage/>}/>
+        <Route path='/questions' element={<QuestionsPage/>}/>
       </Routes>
     </Layout>
   );
