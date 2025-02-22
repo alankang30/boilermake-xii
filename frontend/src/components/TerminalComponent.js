@@ -20,7 +20,7 @@ function TerminalComponent() {
 
     socket.current.on("connect", () => {
       socket.current.emit("start_terminal");
-      term.writeln("[frontend] Connected to Flask Terminal!");
+      term.writeln("Connected to Flask Terminal!");
     });
 
     socket.current.on("terminal_output", (data) => {
