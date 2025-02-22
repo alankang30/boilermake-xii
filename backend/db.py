@@ -11,12 +11,12 @@ def get_db():
     return conn
 
 # adds a question with specifications to the table
-def add_question(question_statement, answer, class_name, topic, image):
+def add_question(question_statement, answer, class_name, topic, difficulty,  image):
     conn = get_db()
     cur = conn.cursor()
     cur.execute(
-        "INSERT INTO questions (question_statement, answer, class_name, topic, image) VALUES (?, ?, ?, ?, ?)",
-        (question_statement, answer, class_name, topic, image),
+        "INSERT INTO questions (question_statement, answer, class_name, topic, difficulty, image) VALUES (?, ?, ?, ?, ?)",
+        (question_statement, answer, class_name, topic, difficulty, image),
     )
     conn.commit()
     print("successfully added")
