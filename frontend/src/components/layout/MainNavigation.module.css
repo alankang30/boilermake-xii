@@ -1,4 +1,4 @@
-
+/* 
 .header {
   width: 80%;
   height: 5rem;
@@ -45,4 +45,319 @@
   border-radius: 12px;
   padding: 0 1rem;
   margin-left: 0.5rem;
+} */
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  background-color: #FFF8E8;
+  padding: 0 10%;
+}
+
+/* squirrel review */
+.squirrelreview {
+  color: rgba(38, 58, 56, 1);
+  text-transform: none;
+  line-break: auto;
+  overflow-wrap: initial;
+  white-space: pre;
+  font-size: 18px;
+  text-rendering: geometricPrecision;
+  /* caret-color: rgba(38, 58, 56, 1); */
+  text-decoration: none;
+  letter-spacing: 0px;
+  font-family: "Chivo Mono";
+  font-style: normal;
+  font-weight: 400;
+  position: absolute;
+  left: 33px;
+  top: 10px;
+  width: 162px;
+  height: 22px;
+  display: flex;
+  /* white-space: "break-spaces"; */
+  /* align-items: flex-start; */
+  /* display: inline-flex; */
+  /* flex-direction: column; */
+  /* justify-content: inherit; */
+  /* margin-right: 1px; */
+  /* vertical-align: top; */
+  /* font-size: 0; */
+  /* line-height: 1.2; */
+  /* margin: 0; */
+  /* text-align: left; */
+}
+
+.navtext {
+  color: rgba(38, 58, 56, 1);
+  text-transform: none;
+  line-break: auto;
+  overflow-wrap: initial;
+  white-space: pre;
+  font-size: 18px;
+  text-rendering: geometricPrecision;
+  caret-color: rgba(38, 58, 56, 1);
+  text-decoration: none;
+  letter-spacing: 0px;
+  font-family: "Chivo Mono";
+  font-style: normal;
+  font-weight: 400;
+}
+
+.courses {
+  color: rgba(38, 58, 56, 1);
+  text-transform: none;
+  line-break: auto;
+  overflow-wrap: initial;
+  white-space: pre;
+  font-size: 18px;
+  text-rendering: geometricPrecision;
+  caret-color: rgba(38, 58, 56, 1);
+  text-decoration: none;
+  letter-spacing: 0px;
+  font-family: "Chivo Mono";
+  font-style: normal;
+  font-weight: 400;
+  position: absolute;
+  right: 330px;
+  top: 10px;
+  width: 44px;
+  height: 22px;
+}
+
+.about {
+  color: rgba(38, 58, 56, 1);
+  text-transform: none;
+  line-break: auto;
+  overflow-wrap: initial;
+  white-space: pre;
+  font-size: 18px;
+  text-rendering: geometricPrecision;
+  caret-color: rgba(38, 58, 56, 1);
+  text-decoration: none;
+  letter-spacing: 0px;
+  font-family: "Chivo Mono";
+  font-style: normal;
+  font-weight: 400;
+  position: absolute;
+  right: 170px;
+  top: 10px;
+  width: 76px;
+  height: 22px;
+}
+
+.feedback {
+  color: rgba(38, 58, 56, 1);
+  text-transform: none;
+  line-break: auto;
+  overflow-wrap: initial;
+  white-space: pre;
+  font-size: 18px;
+  text-rendering: geometricPrecision;
+  caret-color: rgba(38, 58, 56, 1);
+  text-decoration: none;
+  letter-spacing: 0px;
+  font-family: "Chivo Mono";
+  font-style: normal;
+  font-weight: 400;
+  position: absolute;
+  right: 33px;
+  top: 10px;
+  width: 108px;
+  height: 22px;
+}
+
+
+/* .header .squirrel-r-c63b1dd72dd6 {
+  position: absolute;
+  left: 33px;
+  top: 29px;
+  width: 162px;
+  height: 22px;
+}
+.header .squirrel-r-c63b1dd72dd6 .root-0 {
+  display: flex;
+  white-space: break-spaces;
+  align-items: flex-start;
+}
+.header .squirrel-r-c63b1dd72dd6 .root-0-paragraph-set-0 {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: inherit;
+  
+  margin-right: 1px;
+  vertical-align: top;
+}
+.header .squirrel-r-c63b1dd72dd6 .root-0-paragraph-set-0-paragraph-0 {
+  font-size: 0;
+  line-height: 1.2;
+  margin: 0;
+  text-align: left;
+}
+.header .squirrel-r-c63b1dd72dd6 .root-0-paragraph-set-0-paragraph-0-text-0 {
+  color: rgba(38, 58, 56, 1);
+  text-transform: none;
+  
+  line-break: auto;
+  overflow-wrap: initial;
+  white-space: pre;
+  font-size: 18px;
+  text-rendering: geometricPrecision;
+  caret-color: rgba(38, 58, 56, 1);
+  text-decoration: none;
+  letter-spacing: 0px;
+  font-family: "Chivo Mono";
+  font-style: normal;
+  font-weight: 400;
+} */
+
+/* courses */
+.courses-c63e26240e6e {
+  position: absolute;
+  left: 1048px;
+  top: 29px;
+  width: 44px;
+  height: 22px;
+}
+
+.courses-c63e26240e6e .root-0 {
+  display: flex;
+  white-space: break-spaces;
+  align-items: flex-start;
+}
+
+.courses-c63e26240e6e .root-0-paragraph-set-0 {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: inherit;
+
+  margin-right: 1px;
+  vertical-align: top;
+}
+
+.courses-c63e26240e6e .root-0-paragraph-set-0-paragraph-0 {
+  font-size: 0;
+  line-height: 1.2;
+  margin: 0;
+  text-align: left;
+}
+
+.courses-c63e26240e6e .root-0-paragraph-set-0-paragraph-0-text-0 {
+  color: rgba(38, 58, 56, 1);
+  text-transform: none;
+
+  line-break: auto;
+  overflow-wrap: initial;
+  white-space: pre;
+  font-size: 18px;
+  text-rendering: geometricPrecision;
+  caret-color: rgba(38, 58, 56, 1);
+  text-decoration: none;
+  letter-spacing: 0px;
+  font-family: "Chivo Mono";
+  font-style: normal;
+  font-weight: 400;
+}
+
+
+/* about */
+.about-c63e30185bf2 {
+  position: absolute;
+  left: 1150px;
+  top: 29px;
+  width: 76px;
+  height: 22px;
+}
+
+.about-c63e30185bf2 .root-0 {
+  display: flex;
+  white-space: break-spaces;
+  align-items: flex-start;
+}
+
+.about-c63e30185bf2 .root-0-paragraph-set-0 {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: inherit;
+
+  margin-right: 1px;
+  vertical-align: top;
+}
+
+.about-c63e30185bf2 .root-0-paragraph-set-0-paragraph-0 {
+  font-size: 0;
+  line-height: 1.2;
+  margin: 0;
+  text-align: left;
+}
+
+.about-c63e30185bf2 .root-0-paragraph-set-0-paragraph-0-text-0 {
+  color: rgba(38, 58, 56, 1);
+  text-transform: none;
+
+  line-break: auto;
+  overflow-wrap: initial;
+  white-space: pre;
+  font-size: 18px;
+  text-rendering: geometricPrecision;
+  caret-color: rgba(38, 58, 56, 1);
+  text-decoration: none;
+  letter-spacing: 0px;
+  font-family: "Chivo Mono";
+  font-style: normal;
+  font-weight: 400;
+}
+
+
+
+/* feedback */
+.feedback-c63e55b77d74 {
+  position: absolute;
+  left: 1278px;
+  top: 29px;
+  width: 108px;
+  height: 22px;
+}
+
+.feedback-c63e55b77d74 .root-0 {
+  display: flex;
+  white-space: break-spaces;
+  align-items: flex-start;
+}
+
+.feedback-c63e55b77d74 .root-0-paragraph-set-0 {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: inherit;
+
+  margin-right: 1px;
+  vertical-align: top;
+}
+
+.feedback-c63e55b77d74 .root-0-paragraph-set-0-paragraph-0 {
+  font-size: 0;
+  line-height: 1.2;
+  margin: 0;
+  text-align: left;
+}
+
+.feedback-c63e55b77d74 .root-0-paragraph-set-0-paragraph-0-text-0 {
+  color: rgba(38, 58, 56, 1);
+  text-transform: none;
+
+  line-break: auto;
+  overflow-wrap: initial;
+  white-space: pre;
+  font-size: 18px;
+  text-rendering: geometricPrecision;
+  caret-color: rgba(38, 58, 56, 1);
+  text-decoration: none;
+  letter-spacing: 0px;
+  font-family: "Chivo Mono";
+  font-style: normal;
+  font-weight: 400;
 }
