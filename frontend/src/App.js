@@ -7,7 +7,8 @@ import ClassesPage from './pages/Classes.js'
 import AboutPage from './pages/About.js'
 import FeedbackPage from './pages/Feedback.js'
 
-import ClassPage from './components/ui/ClassPage.js'
+//import ClassPage from './components/ui/ClassPage.js'
+import CS240Page from './pages/classes/CS240.js'
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
         <Route path='/about' element={<AboutPage/>}/>
         <Route path='/feedback' element={<FeedbackPage/>}/>
         <Route path='/classes' element={<ClassesPage/>}/>
-        <Route path='/classes/cs240' element={<ClassPage/>}/>
+        <Route path='/classes/cs240' element={<CS240Page/>}/>
       </Routes>
     </Layout>
   );
