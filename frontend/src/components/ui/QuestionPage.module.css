@@ -1,6 +1,7 @@
 .pagecontainer {
+  width: 90vw;
   display: flex;
-  height: 100vh;
+  height: 80vh;
   background-color: #f4f4f4;
   justify-content: left;
   align-items: center;
@@ -18,7 +19,7 @@
 
 .righthalf {
   width: 50%;
-  height: 80%;
+  height: 90%;
   flex: 1;
   padding: 20px;
   border: 2px solid #ccc;

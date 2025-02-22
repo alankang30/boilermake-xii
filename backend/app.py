@@ -72,6 +72,7 @@ def add_cors_headers(response):
     """ Debugging: Log headers to ensure CORS is applied """
     print("CORS Headers:", response.headers)
     return response
+
 # Store terminal process
 processes = {}
 

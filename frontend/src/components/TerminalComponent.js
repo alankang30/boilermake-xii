@@ -30,6 +30,8 @@ function TerminalComponent() {
    term.onData((data) => {
       console.log("Sending input to server:", data); // Debugging line
       socket.current.emit("terminal_input", data);
+      term.write(data);
+      //socket.current.emit("terminal_output", data);
     });
     return () => {
       socket.current.disconnect();
