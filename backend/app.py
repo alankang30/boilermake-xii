@@ -115,8 +115,8 @@ def handle_terminal_input(data):
     """Send user input to the terminal."""
     fd = next(iter(processes.keys()), None)
     if fd:
-        #with write_lock:  # Ensure only one thread writes at a time
-        os.write(fd, data.encode())
+        with write_lock:  # Ensure only one thread writes at a time
+            os.write(fd, data.encode())
 
 @socketio.on("disconnect")
 def handle_disconnect():
