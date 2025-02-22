@@ -17,6 +17,8 @@ const QuestionsList = () => {
             });
     }, []);  // Empty dependency array ensures it runs once when component mounts
 
+    console.log(questions)
+
     if (loading) return <p>Loading...</p>;
 
     return (

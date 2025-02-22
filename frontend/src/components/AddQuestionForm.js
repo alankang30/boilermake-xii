@@ -30,11 +30,11 @@ const AddQuestionForm = () => {
 
         try {
             // this gets data from flask backend under /api/questions 
-            console.log("in try block")
             const response = await fetch("http://127.0.0.1:5000/api/questions", {
                 method: "POST",
                 body: data
             });
+
             const result = await response.json();
             if (response.ok) {
                 setMessage("Question added successfully!");

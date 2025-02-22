@@ -15,7 +15,7 @@ def add_question(question_statement, answer, class_name, topic, difficulty,  ima
     conn = get_db()
     cur = conn.cursor()
     cur.execute(
-        "INSERT INTO questions (question_statement, answer, class_name, topic, difficulty, image) VALUES (?, ?, ?, ?, ?)",
+        "INSERT INTO questions (question_statement, answer, class_name, topic, difficulty, image) VALUES (?, ?, ?, ?, ?, ?)",
         (question_statement, answer, class_name, topic, difficulty, image),
     )
     conn.commit()
