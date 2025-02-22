@@ -27,7 +27,8 @@ const QuestionsList = () => {
             <ul>
                 {questions.map((q) => (
                     <li key={q.id}>
-                        <strong>{q.question_statement}</strong> (Class: {q.class_name}, Topic: {q.topic}, Difficulty: {q.difficulty})
+                        <strong>{q.question_statement}</strong> (Class: {q.class_name}, Topic: {q.topic}, Difficulty: {q.difficulty}, Image: {q.image})
+                        <img src={`../../../backend/static/uploads/${q.image}`} alt="Question Image" style={{ width: "200px", height: "auto" }} />
                     </li>
                 ))}
             </ul>
