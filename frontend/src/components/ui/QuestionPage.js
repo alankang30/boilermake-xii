@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from "./QuestionPage.module.css"; // Ensure you import the CSS file
 
 import TerminalComponent2 from '../TerminalComponent2.js'
+import TerminalComponent from '../TerminalComponent.js'
 
 
 function QuestionAnswerPage(props) {
@@ -20,7 +21,7 @@ function QuestionAnswerPage(props) {
         <h2>
           Terminal goes here
         </h2>
-        <TerminalComponent2/>
+        <TerminalComponent/>
      </div>
     </div>
   );

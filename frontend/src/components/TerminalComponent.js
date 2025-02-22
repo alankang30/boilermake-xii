@@ -1,28 +1,43 @@
-import { FitAddon } from '@xterm/addon-fit'
-import { useEffect } from 'react'
-import { useXTerm } from 'react-xtermjs'
+import React, { useEffect, useRef } from "react";
+import { Terminal } from "xterm";
+import { FitAddon } from "xterm-addon-fit";
+import { io } from "socket.io-client";
+import "xterm/css/xterm.css";
 
-const TerminalComponent = () => {
-  const { instance, ref } = useXTerm()
-  const fitAddon = new FitAddon()
+function TerminalComponent() {
+  const terminalRef = useRef(null);
+  const socket = useRef(null);
 
   useEffect(() => {
-    // Load the fit addon
-    instance?.loadAddon(fitAddon)
+    const term = new Terminal({ cursorBlink: true });
+    const fitAddon = new FitAddon();
+    term.loadAddon(fitAddon);
+    term.open(terminalRef.current);
+    fitAddon.fit();
 
-    const handleResize = () => fitAddon.fit()
+    // Connect to Flask WebSocket
+    socket.current = io("http://127.0.0.1:5000");
 
-    // Write custom message on your terminal
-    instance?.writeln('Welcome react-xtermjs!')
-    instance?.writeln('This is a simple example using an addon.')
+    socket.current.on("connect", () => {
+      socket.current.emit("start_terminal");
+      term.writeln("[frontend] Connected to Flask Terminal!");
+    });
 
-    // Handle resize event
-    window.addEventListener('resize', handleResize)
+    socket.current.on("terminal_output", (data) => {
+      term.write(data);
+    });
+
+   term.onData((data) => {
+      console.log("Sending input to server:", data); // Debugging line
+      socket.current.emit("terminal_input", data);
+    });
     return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  },)
+      socket.current.disconnect();
+      term.dispose();
+    };
+  }, []);
 
-  return <div ref={ref} style={{ height: '100%', width: '100%' }} />
+  return <div ref={terminalRef} className="terminal"></div>;
 }
+
 export default TerminalComponent;
