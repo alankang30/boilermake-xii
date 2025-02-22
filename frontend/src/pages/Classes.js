@@ -8,12 +8,12 @@ function ClassesPage() {
     if (buttonId == 1) {
       navigate('/classes/cs240')
     }
-    // else if (buttonId == 2) {
-
-    // }
-    // else {
-
-    // }
+    else if (buttonId == 2) {
+      navigate('/classes/cs250')
+    }
+    else {
+      navigate('/classes/cs251')
+    }
   };
 
 

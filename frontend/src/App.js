@@ -11,6 +11,8 @@ import QuestionsPage from './pages/Questions.js';
 
 //import ClassPage from './components/ui/ClassPage.js'
 import CS240Page from './pages/classes/CS240.js'
+import CS250Page from './pages/classes/CS250.js'
+import CS251Page from './pages/classes/CS251.js'
 
 function App() {
 
@@ -33,6 +35,8 @@ function App() {
         <Route path='/feedback' element={<FeedbackPage/>}/>
         <Route path='/classes' element={<ClassesPage/>}/>
         <Route path='/classes/cs240' element={<CS240Page/>}/>
+        <Route path='/classes/cs250' element={<CS250Page/>}/>
+        <Route path='/classes/cs251' element={<CS251Page/>}/>
         <Route path='/add' element={<AddQuestionPage/>}/>
         <Route path='/questions' element={<QuestionsPage/>}/>
       </Routes>
