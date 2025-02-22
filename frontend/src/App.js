@@ -7,6 +7,8 @@ import ClassesPage from './pages/Classes.js'
 import AboutPage from './pages/About.js'
 import FeedbackPage from './pages/Feedback.js'
 
+import ClassPage from './components/ui/ClassPage.js'
+
 function App() {
 
   // the following code does an api call to the flask
@@ -27,7 +29,7 @@ function App() {
         <Route path='/about' element={<AboutPage/>}/>
         <Route path='/feedback' element={<FeedbackPage/>}/>
         <Route path='/classes' element={<ClassesPage/>}/>
-        <Route path='/classes/cs240' element={<ClassesPage/>}/>
+        <Route path='/classes/cs240' element={<ClassPage/>}/>
       </Routes>
     </Layout>
   );
