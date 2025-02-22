@@ -89,6 +89,10 @@ body {
 
 }
 
+* {
+    box-sizing: border-box;
+}
+
 .boxes {
     display: flex;
     justify-content: space-evenly;
@@ -104,12 +108,28 @@ body {
     height: 267px;
     background: rgba(130, 161, 127, 0.3);
     border-radius: 12px;
+    transition: transform 0.2s ease;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
-
-* {
-    box-sizing: border-box;
+.rect1:focus, .rect2:focus, .rect3:focus {
+    outline: none;
+    box-shadow: none;
 }
+
+.rect1:hover, .rect2:hover, .rect3:hover {
+    background-color: rgba(130, 161, 127, 0.3);
+    box-shadow: 0 0 20px rgba(17, 84, 74, 1);
+    transform: scale(1.05);
+}
+
+.rect1:active, .rect2:active, .rect3:active {
+    transform: scale(0.95);
+}
+
 
 .rect1::before, .rect2::before, .rect3::before {
     position: absolute;
@@ -118,15 +138,15 @@ body {
     text-align: center;
     color: rgba(17, 84, 74, 0.2);
     text-transform: none;
-    line-break: auto;
+    /* line-break: auto;
     overflow-wrap: initial;
-    white-space: pre;
+    white-space: pre; */
     font-size: 320px;
     text-rendering: geometricPrecision;
-    text-decoration: none;
+    /* text-decoration: none; */
     letter-spacing: -25px;
     font-family: "Contrail One";
-    font-style: normal;
+    /* font-style: normal; */
     font-weight: 400;
 }
 
@@ -146,13 +166,13 @@ body {
 .rect1::after, .rect2::after, .rect3::after {
     position: absolute;
     color: rgba(38, 58, 56, 1);
-    text-transform: none;
+    /* text-transform: none;
     line-break: auto;
-    overflow-wrap: initial;
+    overflow-wrap: initial; */
     font-size: 48px;
     text-rendering: geometricPrecision;
     text-decoration: none;
-    letter-spacing: 0px;
+    /* letter-spacing: 0px; */
     font-family: "Fjalla One";
     font-style: normal;
     font-weight: 400;
@@ -167,6 +187,7 @@ body {
 
 .rect2::after {
     content: "SYSTEMS PROGRAMING";
+    left: 15px;
     top: 70px;
 }
 

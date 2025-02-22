@@ -1,7 +1,22 @@
 import MainNavigation from '../components/layout/MainNavigation';
 import './Classes.css';
+import { useNavigate } from "react-router-dom";
 
 function ClassesPage() {
+  const navigate = useNavigate(); 
+  const handleClick = (buttonId) => {
+    if (buttonId == 1) {
+      navigate('/classes/cs240')
+    }
+    // else if (buttonId == 2) {
+
+    // }
+    // else {
+
+    // }
+  };
+
+
   return (
     <div className="classpage">
       <div class="header">
@@ -14,9 +29,9 @@ function ClassesPage() {
       </div>
 
       <div className="boxes">
-        <div className="rect1"></div>
-        <div className="rect2"></div>
-        <div className="rect3"></div>
+        <button className="rect1" onClick={() => handleClick(1)}></button>
+        <button className="rect2" onClick={() => handleClick(2)}></button>
+        <button className="rect3" onClick={() => handleClick(3)}></button>
       </div>
     </div>
 
