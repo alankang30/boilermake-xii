@@ -1,8 +1,13 @@
+import MainNavigation from '../components/layout/MainNavigation';
+
 function HomePage() {
   return (
-  <div>
-      home
-    </div>
+    <body>
+      <MainNavigation />
+      <div>
+        home
+      </div>
+    </body>
   )
 }
 
