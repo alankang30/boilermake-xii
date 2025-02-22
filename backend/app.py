@@ -1,7 +1,11 @@
 from db import * 
 from flask import Flask, Blueprint, request, render_template, jsonify
 
+from flask_cors import CORS
+
 app = Flask(__name__)
+
+CORS(app)
 
 question_routes = Blueprint("question_routes", __name__)  # Creating a Blueprint
 
@@ -18,10 +22,6 @@ def create_question():
     answer = request.form.get("answer")
     topic = request.form.get("topic")
     difficulty = request.form.get("difficulty", "Medium")
-
-    print("hi")
-    print(question_statement)
-    print(class_name)
 
     image = "filename"
 
