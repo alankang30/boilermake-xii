@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import classes from "./QuestionPage.module.css"; // Ensure you import the CSS file
 
+import TerminalComponent2 from '../TerminalComponent2.js'
+
+
 function QuestionAnswerPage(props) {
   const [showAnswer, setShowAnswer] = React.useState(false);
 
@@ -17,10 +20,8 @@ function QuestionAnswerPage(props) {
         <h2>
           Terminal goes here
         </h2>
-        <div>
-          terminal--------
-        </div>
-      </div>
+        <TerminalComponent2/>
+     </div>
     </div>
   );
 }
