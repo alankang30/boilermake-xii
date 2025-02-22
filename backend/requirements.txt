@@ -2,4 +2,5 @@ Flask
 flask-cors
 eventlet
 flask-socketio
+send_from_directory
 

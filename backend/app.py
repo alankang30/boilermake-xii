@@ -2,7 +2,7 @@ import eventlet
 eventlet.monkey_patch()
 
 from db import * 
-from flask import Flask, Blueprint, request, render_template, jsonify
+from flask import Flask, Blueprint, request, render_template, jsonify, send_from_directory
 from flask_cors import CORS  # Import CORS
 import os
 import threading 
@@ -68,6 +68,10 @@ def home():
 def about():
     return render_template('about.html')
 
+@app.route("/uploads/<filename>")
+def uploaded_file(filename):
+    """Serve images from the uploads directory"""
+    return send_from_directory("static/uploads", filename)
 #debugging terminal
 @app.after_request
 def add_cors_headers(response):
