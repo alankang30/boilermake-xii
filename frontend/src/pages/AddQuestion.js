@@ -1,13 +1,14 @@
 import AddQuestionForm from "../components/AddQuestionForm";
+import MainNavigation from "../components/layout/MainNavigation.js"
 
 function AddQuestionPage() {
-    return (
-        <div>
-        <h1>Add Question Form</h1>
-        <AddQuestionForm />
+  return (
+    <div>
+      <MainNavigation/>
+      <AddQuestionForm />
     </div>
-    )
-  }
-  
-  export default AddQuestionPage;
-  
+  )
+}
+
+export default AddQuestionPage;
+

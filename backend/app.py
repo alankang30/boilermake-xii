@@ -9,6 +9,10 @@ import threading
 import pty
 import select
 import subprocess
+
+from llamaapi import LlamaAPI
+import json
+
 from flask_socketio import SocketIO, emit
 
 from semantic_search import *
@@ -32,15 +36,24 @@ question_routes = Blueprint("question_routes", __name__)  # Creating a Blueprint
 def hello():
     return jsonify({"message": "Hello from Flask!"})
 
+# init llama
+api_token = "LA-4aa03eddb4eb43eb8b0393f5b3e43c69ebff7cca154a406481c6288eee9b3cfd"
+llama = LlamaAPI(api_token)
+
 @app.route("/api/questions", methods=["POST"])
 def create_question():
+    print("received new request for question")
 
     # getting data from 
-    question_statement = request.form.get("question_statement")
-    class_name = request.form.get("class_name")
+    question_statement = request.form.get("questionstatement")
+    class_name = request.form.get("classname")
     answer = request.form.get("answer")
-    topic = request.form.get("topic")
     difficulty = request.form.get("difficulty", "Medium")
+
+    topic = request.form.get("topic", "").strip()
+    if not topic:
+        print("llama generate topic")
+        topic = generate_topic(question_statement, class_name, answer)
 
     image = "filename"
 
@@ -52,9 +65,28 @@ def create_question():
             image = image_file.filename
 
 
+    
+    #print("adding question:", question_statement, answer, class_name, topic, difficulty, image)
+
     add_question(question_statement, answer, class_name, topic, difficulty, image)
 
     return jsonify({"message": "Question added!"}), 201
+
+def generate_topic(question_statement, class_name, answer):
+    """Uses the Llama API to generate a topic based on question details."""
+    prompt = f"Categorize the following question into a single-word topic within CS:\n\nQuestion: {question_statement}\nAnswer: {answer}\nClass: {class_name}\n\nTopic:"
+
+    api_request_json = {
+  "model": "llama3.1-8b",
+  "messages": [
+    {"role": "system", "content": "Categorize the following question into a single-word topic within CS:\n"},
+    {"role": "user", "content": f'\nQuestion: {question_statement}\nAnswer: {answer}\nClass: {class_name}\n\nTopic:'},
+  ]
+}
+    response = llama.run(api_request_json)  # Run the API request
+
+    #print(json.dumps(response.json()["choices"][0]["message"]["content"], indent=2))
+    return response.json()["choices"][0]["message"]["content"]
 
 @app.route('/api/questions', methods=["GET"])
 def fetch_questions():

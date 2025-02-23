@@ -1,0 +1,61 @@
+.formcontainer {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    text-align: center;
+    color: #333;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label {
+    font-weight: bold;
+    color: #555;
+}
+
+.input, .select, .fileinput {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.select {
+    cursor: pointer;
+}
+
+.fileinput {
+    border: none;
+}
+
+.button {
+    background: rgba(130, 161, 127, 1);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background: rgba(130, 161, 127, 0.8);
+}
+
+.message {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+    color: green;
+}
