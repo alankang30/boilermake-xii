@@ -3,7 +3,7 @@ import { ReactTerminal } from "react-terminal";
 function Terminal(props) {
   // Define commands here
   const commands = {
-    whoami: "jackharper",
+    whoami: "",
     cd: (directory) => `changed path to ${directory}`,
     echo: (msg) => `${msg}`,
   };

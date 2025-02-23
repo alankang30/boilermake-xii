@@ -1,0 +1,40 @@
+
+
+.questionscontainer {
+  width: 90%;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.questionslist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.questionbutton {
+  width: 100%;
+  text-align: left;
+  background: rgba(130, 161, 127, 0.3);
+  color: rgba(38, 58, 56, 1);
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.questionbutton:hover {
+    background-color: rgba(130, 161, 127, 0.3);
+    box-shadow: 0 0 20px rgba(17, 84, 74, 1);
+    transform: scale(1.01);
+}
+
+.questionbutton span {
+  font-size: 14px;
+  color: rgba(17, 84, 74, 1);
+}

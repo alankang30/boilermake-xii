@@ -14,6 +14,8 @@ import CS240Page from './pages/classes/CS240.js'
 import CS250Page from './pages/classes/CS250.js'
 import CS251Page from './pages/classes/CS251.js'
 
+import QuestionAnswerPage from './components/ui/QuestionPage.js'
+
 function App() {
 
   // the following code does an api call to the flask
@@ -37,6 +39,7 @@ function App() {
         <Route path='/classes/cs240' element={<CS240Page/>}/>
         <Route path='/classes/cs250' element={<CS250Page/>}/>
         <Route path='/classes/cs251' element={<CS251Page/>}/>
+        <Route path='/classes/cs240/TESTQUESTION' element={<QuestionAnswerPage question="What's 2+2" answer="4"/>}/>
         <Route path='/add' element={<AddQuestionPage/>}/>
         <Route path='/questions' element={<QuestionsPage/>}/>
       </Routes>
