@@ -3,6 +3,7 @@ import classes from "./ClassPage.module.css";
 import { useNavigate } from "react-router-dom";  // Import React Router navigation
 import MainNavigation from "../layout/MainNavigation";
 import Dropdown from "./Dropdown.js";
+import SearchBox from "../ui/SearchBox.js"
 
 function ClassPage(props) {
   const [questions, setQuestions] = useState([]);
@@ -31,6 +32,7 @@ function ClassPage(props) {
         (topic === "" || q.topic === topic) &&
         (difficulty === "" || q.difficulty === difficulty)
     );
+        {/* TODO @Priyanka add your search filter inside the above function ^^*/}
     setFilteredQuestions(filtered);
   };
 
@@ -41,8 +43,6 @@ const buttonHandler = (question) => {
   return (
     <div>
       <MainNavigation />
-
-
       {/* Question List */}
       <div className={classes.classcontainer}>
         <div className={classes.card}>
@@ -63,6 +63,8 @@ const buttonHandler = (question) => {
               selected={difficulty}
               onChange={setDifficulty}
             />
+            {/*Search box component*/}
+            <SearchBox  />
             <button className={classes.filterButton} onClick={handleFilter}>Filter</button>
           </div>
           {/* Question list */}
