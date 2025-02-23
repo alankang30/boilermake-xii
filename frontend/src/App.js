@@ -42,6 +42,7 @@ function App() {
         <Route path='/classes/cs240/TESTQUESTION' element={<QuestionAnswerPage question="What's 2+2" answer="4"/>}/>
         <Route path='/add' element={<AddQuestionPage/>}/>
         <Route path='/questions' element={<QuestionsPage/>}/>
+        <Route path='/question' element={<QuestionAnswerPage/>}/>
       </Routes>
     </Layout>
   );

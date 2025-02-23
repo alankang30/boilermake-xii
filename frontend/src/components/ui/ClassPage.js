@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import classes from "./ClassPage.module.css";
+import { useNavigate } from "react-router-dom";  // Import React Router navigation
 import MainNavigation from "../layout/MainNavigation";
 import Dropdown from "./Dropdown.js";
 
@@ -9,6 +10,7 @@ function ClassPage(props) {
   const [className, setClassName] = useState("");
   const [topic, setTopic] = useState("");
   const [difficulty, setDifficulty] = useState("");
+  const navigate = useNavigate();  // Initialize navigation
 
   useEffect(() => {
     fetch("http://127.0.0.1:5000/api/questions") // Fetch questions from Flask
@@ -30,6 +32,10 @@ function ClassPage(props) {
         (difficulty === "" || q.difficulty === difficulty)
     );
     setFilteredQuestions(filtered);
+  };
+
+const buttonHandler = (question) => {
+    navigate("/question", { state: { question } });  // Navigate & pass question
   };
 
   return (
@@ -62,7 +68,7 @@ function ClassPage(props) {
           {/* Question list */}
           <ul>
             {filteredQuestions.map(q => (
-              <button key={q.id} className={classes.questionbutton}>
+              <button key={q.id} className={classes.questionbutton} onClick={() => buttonHandler(q)}>
                 <strong>{q.id}: {q.question_statement}</strong> <br />
                 <span>Class: {q.class_name}</span> | 
                 <span> Topic: {q.topic}</span> | 
