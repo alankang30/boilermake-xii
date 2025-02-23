@@ -68,7 +68,6 @@ function AboutPage() {
         <div className="team">MEET THE TEAM</div>
 
         <div className="info">
-
           <div className="nina">
             <div className="p1"></div>
             <div className="n1">Nina Gruteser</div>
@@ -89,6 +88,7 @@ function AboutPage() {
             <div className="b3">cool person</div>
             <button className="connect3" onClick={() => handleClick(3)}>connect</button>
           </div>
+
 
         </div>
       </div>
