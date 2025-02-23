@@ -46,7 +46,7 @@ def parse_questions(file_path):
 # Example usage
 file_path = "CS240-1.txt"
 data, question_data = parse_questions(file_path)
-print(question_data)
+print(data)
 
 
 # # Print results

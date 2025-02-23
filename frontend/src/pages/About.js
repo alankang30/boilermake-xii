@@ -31,7 +31,6 @@ function AboutPage() {
           <div className="aboutus">ABOUT US</div>
           <div className="subtext">
             We're a small team of Purdue CS students who created Squirrel Review as an all-in-one resource for our CS courses. 
-            We hope it helps you as much as it helped us!
           </div>
         </div>
       </div>
@@ -56,7 +55,7 @@ function AboutPage() {
           </div>
 
           <div className="description">
-            text here
+            We hope it helps you as much as it helped us!
           </div>
         </div>
 
