@@ -1,7 +1,24 @@
 import MainNavigation from '../components/layout/MainNavigation';
 import './About.css';
+import { useNavigate } from "react-router-dom";
+
 
 function AboutPage() {
+  const navigate = useNavigate(); 
+  const handleClick = (buttonId) => {
+    if (buttonId === 1) {
+      window.location.href = 'https://www.linkedin.com/in/nina-gruteser';
+    }
+    else if (buttonId === 2) {
+      window.location.href = 'https://www.linkedin.com/in/alankang/';
+    }
+    else {
+      window.location.href = 'https://www.linkedin.com/in/priyanka-soe/';
+    }
+
+  };
+
+
   return (
     <div className="about">
       <div className="header">
@@ -43,7 +60,32 @@ function AboutPage() {
 
 
       <div className="section3">
-      <div className="team">MEET THE TEAM</div>
+        <div className="team">MEET THE TEAM</div>
+
+        <div className="info">
+
+          <div className="nina">
+            <div className="p1"></div>
+            <div className="n1">Nina Gruteser</div>
+            <div className="b1">coolest person</div>
+            <button className="connect1" onClick={() => handleClick(1)}>connect</button>
+          </div>
+
+          <div className="alan">
+            <div className="p2"></div>
+            <div className="n2">Alan Kang</div>
+            <div className="b2">not so cool person</div>
+            <button className="connect2" onClick={() => handleClick(2)}>connect</button>
+          </div>
+
+          <div className="pri">
+            <div className="p3"></div>
+            <div className="n3">Priyanka Soe</div>
+            <div className="b3">cool person</div>
+            <button className="connect3" onClick={() => handleClick(3)}>connect</button>
+          </div>
+
+        </div>
       </div>
 
 
