@@ -58,7 +58,7 @@ def create_question():
 def fetch_questions():
     ''' Fetches all questions from database '''
     questions = get_questions()
-    print(questions)
+    #print(questions)
     return jsonify(questions), 200
 
 @app.route('/')

@@ -29,7 +29,10 @@ function AboutPage() {
       <div className="section1">
         <div className="leftcolumn">
           <div className="aboutus">ABOUT US</div>
-          <div className="subtext">get to know us...</div>
+          <div className="subtext">
+            We're a small team of Purdue CS students who created Squirrel Review as an all-in-one resource for our CS courses. 
+            We hope it helps you as much as it helped us!
+          </div>
         </div>
       </div>
 
@@ -52,7 +55,9 @@ function AboutPage() {
             <div className="circle3"></div>
           </div>
 
-          <div className="description">some text here</div>
+          <div className="description">
+            text here
+          </div>
         </div>
 
       </div>

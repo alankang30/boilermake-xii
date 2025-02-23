@@ -133,6 +133,7 @@ body {
 }
 
 .subtext {
+    width: 33%;
     color: rgba(38, 58, 56, 1);
     text-transform: none;
     line-break: auto;
@@ -183,6 +184,7 @@ body {
 }
 
 .description {
+    white-space: pre-wrap;
     color: rgba(38, 58, 56, 1);
     padding: 20px;
     text-transform: none;
@@ -253,7 +255,7 @@ body {
 }
 
 .c1::before {
-    content: "100";
+    content: "100+";
 }
 
 .c2::before {
@@ -261,7 +263,7 @@ body {
 }
 
 .c3::before {
-    content: "50";
+    content: "30+";
 }
 
 .c4::before {
@@ -293,11 +295,11 @@ body {
 }
 
 .c3::after {
-    content: "something";
+    content: "topics";
 }
 
 .c4::after {
-    content: "something";
+    content: "accuracy";
 }
 
 
@@ -320,6 +322,7 @@ body {
 
 .section3 {
     display: flex;
+    flex-direction: column;
     position: relative;
     justify-content: center;
     width: 100%;
