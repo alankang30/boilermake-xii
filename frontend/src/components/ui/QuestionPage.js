@@ -35,7 +35,7 @@ function QuestionAnswerPage(props) {
             {question.question_statement}
           </div>
           {/* conditionally render image if it exists */}
-          {question.image !== "filename" && (
+          {question.image !== "filename" && question.image !== null && (
             <img
               src={`http://127.0.0.1:5000/uploads/${question.image}`}
               alt="Question"
