@@ -102,7 +102,7 @@ const buttonHandler = (question) => {
       <div className={classes.classcontainer}>
         <div className={classes.card}>
           <div className={classes.coursetitle}>
-            <p>{props.classnumber} Questions</p>
+            <p>{props.classnumber} QUESTIONS</p>
           </div>
           {/* Dropdown Section */}
           <div className={classes.dropdownContainer}>

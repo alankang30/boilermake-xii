@@ -13,7 +13,15 @@ function Terminal(props) {
       commands={commands}
       welcomeMessage={"Welcome to Squirrel Terminal!\n"}
       prompt="🐿️~"
-      theme="light"
+      themes={{
+        "custom-theme": {
+          themeBGColor: "#d9dec8",
+          themeToolbarColor: "#263a38",
+          themeColor: "#11544a",
+          themePromptColor: "#11544a"
+        }
+      }}
+      theme="custom-theme"
     />
   );
 }

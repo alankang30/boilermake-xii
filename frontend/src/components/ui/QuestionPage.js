@@ -25,11 +25,15 @@ function QuestionAnswerPage(props) {
         {/*question*/}
         <div className={classes.lefthalf}>
           <div className={classes.title}>
-            <h1>{question.class_name}: Problem {question.id}</h1>
+            {question.class_name}: Problem {question.id}
           </div>
-          <p>Topic: {question.topic}</p>
-          <p>Difficulty: {question.difficulty}</p>
-          <h2>{question.question_statement}</h2>
+          <div className={classes.categories}>
+            Topic: {question.topic}<br />
+            Difficulty: {question.difficulty}
+          </div>
+          <div className={classes.questionStatement}>
+            {question.question_statement}
+          </div>
           {/* conditionally render image if it exists */}
           {question.image !== "filename" && (
             <img

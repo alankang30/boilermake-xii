@@ -80,6 +80,7 @@
 
 
 .pagecontainer {
+  position: relative;
   width: 90vw;
   display: flex;
   height: 80vh;
@@ -89,11 +90,13 @@
 }
 
 .lefthalf {
-  width: 50%;
-  flex: 1;
-  padding: 20px;
   display: flex;
   flex-direction: column;
+  position: relative;
+  width: 50%;
+  height: 100%;
+  flex: 1;
+  /* padding: 20px; */
   align-items: center;
   justify-content: center;
 }
@@ -113,16 +116,27 @@
 button {
   margin-top: 10px;
   padding: 10px 15px;
-  font-size: 16px;
+  text-align: left;
+  background: rgba(130, 161, 127, 0.3);
+  color: rgba(38, 58, 56, 1);
   border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.backButton {
+  position: absolute;
+  bottom: 10%;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #FFF8E8;
+  color: rgba(38, 58, 56, 0.85);
+  border: 1px solid rgba(38, 58, 56, 0.85);
+  transform: scale(1.03);
+  transition: transform 0.3s ease-in-out;
 }
 
 .answer {
@@ -133,20 +147,31 @@ button:hover {
 
 .title {
   position: absolute;
-  left: 86px;
-  top: 164px;
-  width: 168px;
-  height: 48px;
+  top: 10%;
   color: rgba(38, 58, 56, 1);
   text-transform: none;
   line-break: auto;
   overflow-wrap: initial;
   white-space: pre;
-  font-size: 48px;
+  font-size: 30px;
   text-rendering: geometricPrecision;
   text-decoration: none;
   letter-spacing: 0px;
   font-family: "Fjalla One";
   font-style: normal;
   font-weight: 400;
+}
+
+.categories {
+  position: absolute;
+  top: 18%;
+  font-size: 20px;
+  font-family: "Anek Bangla";
+  color: rgba(17, 84, 74, 1);
+}
+
+.questionStatement {
+  font-size: 20px;
+  font-family: "Anek Bangla";
+  color: rgba(17, 84, 74, 1);
 }
