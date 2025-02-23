@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 function ClassesPage() {
   const navigate = useNavigate(); 
   const handleClick = (buttonId) => {
-    if (buttonId == 1) {
+    if (buttonId === 1) {
       navigate('/classes/cs240')
     }
-    else if (buttonId == 2) {
+    else if (buttonId === 2) {
       navigate('/classes/cs250')
     }
     else {

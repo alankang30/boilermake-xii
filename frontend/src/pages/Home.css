@@ -81,6 +81,7 @@
 
 html,
 body {
+    position: relative;
     margin: 0;
     min-height: 100%;
     min-width: 100%;
@@ -93,129 +94,197 @@ body {
     box-sizing: border-box;
 }
 
-.boxes {
+
+.welcome {
     display: flex;
-    justify-content: space-evenly;
     position: absolute;
-    top: 300px; 
-    left: 0;
-    width: 100%;
-}
-
-.rect1, .rect2, .rect3 {
-    position: relative;
-    width: 409px;
-    height: 267px;
-    background: rgba(130, 161, 127, 0.3);
-    border-radius: 12px;
-    transition: transform 0.2s ease;
-
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-.rect1:focus, .rect2:focus, .rect3:focus {
-    outline: none;
-    box-shadow: none;
-}
-
-.rect1:hover, .rect2:hover, .rect3:hover {
-    background-color: rgba(130, 161, 127, 0.3);
-    box-shadow: 0 0 20px rgba(17, 84, 74, 1);
-    transform: scale(1.05);
-}
-
-.rect1:active, .rect2:active, .rect3:active {
-    transform: scale(0.95);
-}
-
-
-.rect1::before, .rect2::before, .rect3::before {
-    position: absolute;
-    top: -45px;
-    left: -5px;
-    text-align: center;
-    color: rgba(17, 84, 74, 0.2);
-    text-transform: none;
-    /* line-break: auto;
-    overflow-wrap: initial;
-    white-space: pre; */
-    font-size: 320px;
-    text-rendering: geometricPrecision;
-    /* text-decoration: none; */
-    letter-spacing: -25px;
-    font-family: "Contrail One";
-    /* font-style: normal; */
-    font-weight: 400;
-}
-
-.rect1::before {
-    content: "240";
-}
-
-.rect2::before {
-    content: "250";
-}
-
-.rect3::before {
-    content: "251";
-}
-
-
-.rect1::after, .rect2::after, .rect3::after {
-    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 130px; 
     color: rgba(38, 58, 56, 1);
-    /* text-transform: none;
+    text-transform: none;
     line-break: auto;
-    overflow-wrap: initial; */
+    overflow-wrap: initial;
+    white-space: break-spaces;
     font-size: 48px;
     text-rendering: geometricPrecision;
+    caret-color: rgba(38, 58, 56, 1);
     text-decoration: none;
-    /* letter-spacing: 0px; */
+    letter-spacing: 0px;
     font-family: "Fjalla One";
     font-style: normal;
     font-weight: 400;
-    text-align: center;
-}
-
-.rect1::after {
-    content: "PROGRAMMING IN C";
-    left: 27px;
-    top: 100px;
-}
-
-.rect2::after {
-    content: "COMPUTER ARCHITECTURE";
-    left: 15px;
-    top: 70px;
-}
-
-.rect3::after {
-    content: "DATA STRUCTURES \a AND ALGORITHMS";
-    white-space: pre;
-    left: 45px;
-    top: 70px;
 }
 
 
-.courses {
+.terminal {
+    display: flex;
+    width: 100%;
+    background: rgba(130, 161, 127, 0.3);
+    border-radius: 12px;
     position: absolute;
-    left: 86px;
-    top: 164px;
-    width: 168px;
-    height: 48px;
-    color: rgba(17, 84, 74, 1);
+    top: 210px; 
+    left: 50%;
+    transform: translateX(-50%);
+    transform-origin: center;
+    width: 1018px;
+    height: 543px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 1px 1px 1rem rgb(26 26 26 / 15%);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.terminal:hover {
+    background-color: rgba(130, 161, 127, 0.3);
+    box-shadow: 0 0 20px 0.5rem rgb(26 26 26 / 15%);
+    transform: translateX(-50%) scale(1.01);
+    transition: transform 0.3s ease-in-out;
+}
+
+.top {
+    width: 100%;
+    background: #263A38;
+    border-radius: 12px 12px 0 0;
+    position: absolute;
+    height: 25px; 
+}
+
+.circles {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    top: 0px;
+    width: 70px;
+    height: 25px;
+}
+
+.circle1, .circle2, .circle3 {
+    width: 15px;
+    height: 14px;
+    background: rgba(130, 161, 127, 0.3);
+    border-radius: 50%;
+}
+
+#logo-name {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50px; 
+    width: 80%;
+    height: auto;
+}
+
+#logo {
+    position: absolute;
+    right: 0px;
+    bottom: 2%;
+    width: 10%;
+    height: auto;
+}
+
+.text-line1 {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    color: rgba(38, 58, 56, 1);
     text-transform: none;
     line-break: auto;
     overflow-wrap: initial;
-    white-space: pre;
-    font-size: 40px;
+    font-size: 36px;
     text-rendering: geometricPrecision;
-    caret-color: rgba(17, 84, 74, 1);
+    caret-color: rgba(38, 58, 56, 1);
     text-decoration: none;
     letter-spacing: 0px;
     font-family: "Chivo Mono";
     font-style: normal;
     font-weight: 400;
 }
+
+.text-line2 {
+    position: absolute;
+    left: 63px;
+    top: 60%;
+    color: rgba(38, 58, 56, 1);
+    text-transform: none;
+    line-break: auto;
+    overflow-wrap: initial;
+    font-size: 36px;
+    text-rendering: geometricPrecision;
+    caret-color: rgba(38, 58, 56, 1);
+    text-decoration: none;
+    letter-spacing: 0px;
+    font-family: "Chivo Mono";
+    font-style: normal;
+    font-weight: 400;
+}
+
+  
+.bottom {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    position: absolute;
+    top: 85vh;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px; 
+    width: 300px;
+
+    background: rgba(130, 161, 127, 0.3);
+    box-shadow: 4px 4px rgba(17, 84, 74, 0.5), 8px 8px rgba(38, 58, 56, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: rgba(38, 58, 56, 1);
+    text-transform: lowercase;
+    text-align: center;
+    /* border: solid 2px rgba(38, 58, 56, 1); */
+  
+    text-decoration: none;
+  
+    padding: 18px 32px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+    transition: 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    cursor: pointer;
+    overflow: hidden;
+    transition-delay: 0s !important;
+    /* text-transform: uppercase !important; */
+    letter-spacing: 1.5px;
+    font-family: "Chivo Mono";
+}
+.btn::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 100%;
+    background: rgba(17, 84, 74, 0.5);
+    z-index: -1;
+    transition: 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.btn:hover::before {
+    width: 100%;
+    left: 0;
+    right: unset;
+}
+.btn:hover {
+    background-color: rgba(130, 161, 127, 0.3);
+    box-shadow: 0 0 rgba(17, 84, 74, 0.5), 0 0 rgba(38, 58, 56, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: rgb(200, 225, 197);
+}
+  
