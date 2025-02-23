@@ -1,6 +1,38 @@
+/* bengali */
+@font-face {
+  font-family: 'Anek Bangla';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: block;
+  src: url(https://design.penpot.app/internal/gfonts/font/anekbangla/v15/_gPW1R38qTExHg-17BhM6n66QhabMYB0fBKONtHhRSIUIre5mq3Ofm9ZEpIq5pyy.woff2) format('woff2');
+  unicode-range: U+0951-0952, U+0964-0965, U+0980-09FE, U+1CD0, U+1CD2, U+1CD5-1CD6, U+1CD8, U+1CE1, U+1CEA, U+1CED, U+1CF2, U+1CF5-1CF7, U+200C-200D, U+20B9, U+25CC, U+A8F1;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Anek Bangla';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: block;
+  src: url(https://design.penpot.app/internal/gfonts/font/anekbangla/v15/_gPW1R38qTExHg-17BhM6n66QhabMYB0fBKONtHhRSIUIre5mq3Ofm9ZEo4q5pyy.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Anek Bangla';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: block;
+  src: url(https://design.penpot.app/internal/gfonts/font/anekbangla/v15/_gPW1R38qTExHg-17BhM6n66QhabMYB0fBKONtHhRSIUIre5mq3Ofm9ZEoAq5g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 .card {
-  width: 60em;
-  padding-left: 6em;
+  width: 100%;
+  padding-left: 4em;
+  padding-right: 20em;
 }
 
 .classnum {
@@ -8,20 +40,19 @@
 }
 
 .coursetitle {
-  padding-left: 1em;
-    color: rgba(17, 84, 74, 1);
-    text-transform: none;
-    line-break: auto;
-    overflow-wrap: initial;
-    white-space: pre;
-    font-size: 40px;
-    text-rendering: geometricPrecision;
-    caret-color: rgba(17, 84, 74, 1);
-    text-decoration: none;
-    letter-spacing: 0px;
-    font-family: "Chivo Mono";
-    font-style: normal;
-    font-weight: 400;
+  /* padding-left: 1em; */
+  color: rgba(38, 58, 56, 1);
+  text-transform: none;
+  line-break: auto;
+  overflow-wrap: initial;
+  white-space: pre;
+  font-size: 40px;
+  text-rendering: geometricPrecision;
+  text-decoration: none;
+  letter-spacing: 0px;
+  font-family: "Fjalla One";
+  font-style: normal;
+  font-weight: 400;
 }
 
 .classcontainer {
@@ -52,30 +83,45 @@
 }
 
 .dropdownContainer {
-
+  position: relative;
   display: flex;
   justify-content: flex-start;
-  padding-left: 4em;
+  /* padding-left: 4em; */
   gap: 15px;
   margin: 20px 0;
 }
 
 .filterButton {
-  padding: 0px 15px;
+  /* padding: 0px 15px; */
+  position: absolute;
+  top: 20px;
+  left: 450px;
+  height: 40px;
   border: none;
   background-color: rgba(38, 58, 56, 0.85);
-  color: white;
-  border-radius: 5px;
+  color: #FFF8E8;
+  border-radius: 20px;
   cursor: pointer;
+  font-family: "Anek Bangla";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 40px;
+  padding: 0 15px;
 }
 
 .filterButton:hover {
-  background-color: #0056b3;
+  background-color: #FFF8E8;
+  color: rgba(38, 58, 56, 0.85);
+  border: 1px solid rgba(38, 58, 56, 0.85);
+  transform: scale(1.03);
+  transition: transform 0.3s ease-in-out;
 }
 
 
 .questionscontainer {
-  width: 90%;
+  width: 100%;
 }
 
 h2 {
@@ -86,7 +132,7 @@ h2 {
 .questionslist {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 .questionbutton {
@@ -102,12 +148,13 @@ h2 {
 }
 
 .questionbutton:hover {
-    background-color: rgba(130, 161, 127, 0.3);
-    box-shadow: 0 0 20px rgba(17, 84, 74, 1);
-    transform: scale(1.01);
+  background-color: rgba(97, 124, 93, 0.3);
+  /* box-shadow: 0 0 20px rgba(17, 84, 74, 1); */
+  /* transform: scale(1.01); */
 }
 
 .questionbutton span {
   font-size: 14px;
+  font-family: "Anek Bangla";
   color: rgba(17, 84, 74, 1);
 }
