@@ -7,11 +7,17 @@
 
 # testing
 /coverage
+/backend/__pycache__/
+
+backend/des_lsi_model_mm
+backend/des_lsi_model_mm.index
+backend/des_tfidf_model_mm
+backend/des_tfidf_model_mm.index
 
 # production
 /build
 
-/myenv
+backend/myenv
 
 # misc
 .DS_Store

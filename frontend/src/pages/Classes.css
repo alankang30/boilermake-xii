@@ -125,6 +125,7 @@ body {
     box-shadow: 0 0 20px 0.5rem rgb(26 26 26 / 30%);
     transform: scale(1.03);
     transition: transform 0.3s ease-in-out;
+    border: none;
 }
 
 .rect1:active, .rect2:active, .rect3:active {

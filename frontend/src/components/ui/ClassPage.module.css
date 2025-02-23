@@ -86,16 +86,29 @@
   position: relative;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   /* padding-left: 4em; */
   gap: 15px;
   margin: 20px 0;
 }
 
+.dropdownContainer select,
+.dropdownContainer input,
+.filterButton {
+  height: 40px; /* Ensures same height */
+  line-height: 40px; /* Keeps text vertically centered */
+  padding: 0 12px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+
+
 .filterButton {
   /* padding: 0px 15px; */
-  position: absolute;
-  top: 20px;
-  left: 450px;
+  position: relative;
+  /* top: 20px;
+  left: 450px; */
   height: 40px;
   border: none;
   background-color: rgba(38, 58, 56, 0.85);
@@ -149,8 +162,8 @@ h2 {
 
 .questionbutton:hover {
   background-color: rgba(97, 124, 93, 0.3);
-  /* box-shadow: 0 0 20px rgba(17, 84, 74, 1); */
-  /* transform: scale(1.01); */
+  border: none;
+  transform: scale(1);
 }
 
 .questionbutton span {

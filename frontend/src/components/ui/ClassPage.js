@@ -118,8 +118,12 @@ const buttonHandler = (question) => {
             />
             {/*Search box component*/}
             <SearchBox  onSearch={handleSearch}/>
+
             <button className={classes.filterButton} onClick={handleFilter}>Filter</button>
           </div>
+
+        
+
           {/* Question list */}
           <ul>
             {filteredQuestions.map(q => (
