@@ -52,10 +52,12 @@
 }
 
 .dropdownContainer {
+
   display: flex;
+  justify-content: flex-start;
+  padding-left: 4em;
   gap: 15px;
   margin: 20px 0;
-  justify-content: center;
 }
 
 .filterButton {

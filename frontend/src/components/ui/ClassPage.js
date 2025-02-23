@@ -14,8 +14,10 @@ function ClassPage(props) {
     fetch("http://127.0.0.1:5000/api/questions") // Fetch questions from Flask
       .then(response => response.json())
       .then(data => {
-        setQuestions(data);
-        setFilteredQuestions(data); // Initially show all questions
+        // Filter to include only CS240 questions from the start
+        const cs240Questions = data.filter(q => q.class_name === "CS240");
+        setQuestions(cs240Questions);
+        setFilteredQuestions(cs240Questions); // Initially show all CS240 questions
       })
       .catch(error => console.error("Error fetching questions:", error));
   }, []);
@@ -43,12 +45,6 @@ function ClassPage(props) {
           </div>
           {/* Dropdown Section */}
           <div className={classes.dropdownContainer}>
-            <Dropdown
-              label="Class Name"
-              options={[...new Set(questions.map(q => q.class_name))]} // Unique values
-              selected={className}
-              onChange={setClassName}
-            />
             <Dropdown
               label="Topic"
               options={[...new Set(questions.map(q => q.topic))]}
