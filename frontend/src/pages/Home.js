@@ -23,7 +23,7 @@ function HomePage() {
       
       <div className="terminal">
         <div className="top">
-          <div className="circles">
+          <div className="cs">
             <div className="circle1"></div>
             <div className="circle2"></div>
             <div className="circle3"></div>
