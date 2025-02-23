@@ -19,7 +19,7 @@ function ClassPage(props) {
       .then(response => response.json())
       .then(data => {
         // Filter to include only CS240 questions from the start
-        const cs240Questions = data.filter(q => q.class_name === "CS240");
+        const cs240Questions = data.filter(q => q.class_name === props.classnumber);
         setQuestions(cs240Questions);
         setFilteredQuestions(cs240Questions); // Initially show all CS240 questions
       })

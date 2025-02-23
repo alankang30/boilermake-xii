@@ -6,10 +6,6 @@ import QuestionList from '../../components/QuestionList.js'
 function CS240Page() {
   return (
       <ClassPage classnumber="CS240">
-        <Link to='/classes/cs240/TESTQUESTION'>
-          test question
-        </Link>
-        <QuestionList/>
       </ClassPage>
   )
 }
