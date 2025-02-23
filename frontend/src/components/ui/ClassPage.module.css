@@ -8,6 +8,7 @@
 }
 
 .coursetitle {
+  padding-left: 1em;
     color: rgba(17, 84, 74, 1);
     text-transform: none;
     line-break: auto;
@@ -40,11 +41,71 @@
 
 .buffer {
   width: 100%;
-  height: 9.5em;
+  height: 12em;
 }
 
 .colContainer {
+  padding: 1em;
   width: 20em;
   display: flex;
   flex-direction: column;
+}
+
+.dropdownContainer {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  justify-content: center;
+}
+
+.filterButton {
+  padding: 0px 15px;
+  border: none;
+  background-color: rgba(38, 58, 56, 0.85);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filterButton:hover {
+  background-color: #0056b3;
+}
+
+
+.questionscontainer {
+  width: 90%;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.questionslist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.questionbutton {
+  width: 100%;
+  text-align: left;
+  background: rgba(130, 161, 127, 0.3);
+  color: rgba(38, 58, 56, 1);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.questionbutton:hover {
+    background-color: rgba(130, 161, 127, 0.3);
+    box-shadow: 0 0 20px rgba(17, 84, 74, 1);
+    transform: scale(1.01);
+}
+
+.questionbutton span {
+  font-size: 14px;
+  color: rgba(17, 84, 74, 1);
 }
