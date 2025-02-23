@@ -24,13 +24,20 @@ function TerminalComponent() {
     });
 
     socket.current.on("terminal_output", (data) => {
-      term.write(data);
+      //term.write(data);
+      term.write(data.replace(/\n/g, "\r\n"));  // Ensure newlines render properly
     });
 
    term.onData((data) => {
       console.log("Sending input to server:", data); // Debugging line
-      socket.current.emit("terminal_input", data);
-      term.write(data);
+      // socket.current.emit("terminal_input", data);
+      // term.write(data);
+      if (data === "\r") {  // Check if Enter is pressed
+        socket.current.emit("terminal_input", "\n");  // Send newline to backend
+      } else {
+        socket.current.emit("terminal_input", data);  // Send normal input
+      }
+      term.write(data.replace(/\n/g, "\r\n"));  // Ensure newlines render properly
       //socket.current.emit("terminal_output", data);
     });
     return () => {

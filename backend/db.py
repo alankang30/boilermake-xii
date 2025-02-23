@@ -39,13 +39,24 @@ def get_question_by_id(question_id):
     conn.close()
     return dict(question) if question else None
 
-def get_question_by_class(class_name):
+
+def get_questions_by_id(question_ids):
+    '''Input is a list of ids and will return a list of questions'''
     conn = get_db()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM questions WHERE clas_name = ?", (class_name,))
-    question = cur.fetchone()
+    query = f"SELECT * FROM questions WHERE id IN ({','.join(['?'] * len(question_ids))})"
+    cur.execute(query, question_ids)
+    rows = cur.fetchall()
     conn.close()
-    return dict(question) if question else None
+    return [dict(q) for q in rows]
+
+def get_questions_by_class(class_name):
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM questions WHERE class_name = ?", (class_name,))
+    questions = cur.fetchall()
+    conn.close()
+    return [dict(q) for q in questions]
 
 def delete_question(question_id):
     conn = get_db()

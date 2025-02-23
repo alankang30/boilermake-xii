@@ -11,6 +11,7 @@ function ClassPage(props) {
   const [className, setClassName] = useState("");
   const [topic, setTopic] = useState("");
   const [difficulty, setDifficulty] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();  // Initialize navigation
 
   useEffect(() => {
@@ -25,16 +26,70 @@ function ClassPage(props) {
       .catch(error => console.error("Error fetching questions:", error));
   }, []);
 
+
+  const handleSearch = (query) => {
+    // const response = await fetch("http://127.0.0.1:5000/search", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ query }),  // Send query as JSON
+    // });
+
+    // const data = await response.json();
+    // console.log(data);  // Handle response from Flask
+    setSearchQuery(query); 
+
+    // Clear the input field after sending the request
+  };  
+
   // Function to filter questions based on selected criteria
-  const handleFilter = () => {
+
+  const handleFilter = async () => {
     let filtered = questions.filter(q =>
-      (className === "" || q.class_name === className) &&
-        (topic === "" || q.topic === topic) &&
-        (difficulty === "" || q.difficulty === difficulty)
+      (topic === "" || q.topic === topic) &&
+      (difficulty === "" || q.difficulty === difficulty)
     );
-        {/* TODO @Priyanka add your search filter inside the above function ^^*/}
-    setFilteredQuestions(filtered);
+  
+    try {
+      const response = await fetch("http://127.0.0.1:5000/search", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ searchQuery, filtered }),  // Send query as JSON
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to fetch filtered questions");
+      }
+  
+      const data = await response.json();
+      setFilteredQuestions(data);  // Update filtered questions
+      console.log("Filtered questions received:", data);
+    } catch (error) {
+      console.error("Error sending filter request:", error);
+    }
   };
+
+  useEffect(() => {
+    const fetchFilteredQuestions = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:5000/search");
+        if (!response.ok) {
+          throw new Error("Failed to fetch questions");
+        }
+        const data = await response.json();
+        setFilteredQuestions(data);
+      } catch (error) {
+        console.error("Error fetching questions:", error);
+      }
+
+      setSearchQuery("")
+    };
+  
+    fetchFilteredQuestions();
+  }, []);  // Runs once when the component mounts
 
 const buttonHandler = (question) => {
     navigate("/question", { state: { question } });  // Navigate & pass question
@@ -64,7 +119,7 @@ const buttonHandler = (question) => {
               onChange={setDifficulty}
             />
             {/*Search box component*/}
-            <SearchBox  />
+            <SearchBox  onSearch={handleSearch}/>
             <button className={classes.filterButton} onClick={handleFilter}>Filter</button>
           </div>
           {/* Question list */}

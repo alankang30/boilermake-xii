@@ -11,6 +11,8 @@ import select
 import subprocess
 from flask_socketio import SocketIO, emit
 
+from semantic_search import *
+
 write_lock = threading.Lock()
 
 from flask_cors import CORS
@@ -61,6 +63,28 @@ def fetch_questions():
     #print(questions)
     return jsonify(questions), 200
 
+@app.route('/search', methods=["GET", "POST"])
+def search():
+    data = request.get_json()  # Get JSON data from request
+    print(data)
+    query = data.get("searchQuery")
+    filtered_data = data.get("filtered")
+
+    # this will always be the same throughout every search call
+    class_name = filtered_data[0]["class_name"]
+
+    ids = semantic_search(query, filtered_data)
+    print(ids)
+
+    # dummy response (replace with actual)
+    results = get_questions_by_id(ids); 
+
+    if not results:
+        results = get_questions_by_class(class_name)
+
+    print(results)
+    return jsonify(results)
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -93,11 +117,11 @@ def start_terminal():
     pid, fd = pty.openpty()
     process = subprocess.Popen(
             ["/bin/bash"],  # Change to "powershell" for Windows
-            stdin=fd,
-            stdout=fd,
-            stderr=fd,
-            text=True,
-            bufsize=1,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,  # Ensures Python handles text properly
+            bufsize=1,  # Ensures real-time output
             universal_newlines=True,
             )
     processes[fd] = process
@@ -124,7 +148,10 @@ def handle_terminal_input(data):
     fd = next(iter(processes.keys()), None)
     if fd:
         with write_lock:  # Ensure only one thread writes at a time
-            os.write(fd, data.encode())
+            if not data.endswith("\n"):  # Ensure newline is included
+                data += "\n"
+                os.write(fd, data.encode())
+
 
 @socketio.on("disconnect")
 def handle_disconnect():

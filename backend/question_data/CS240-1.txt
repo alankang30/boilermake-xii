@@ -1,0 +1,848 @@
+[Question]
+What does malloc do? What does it take in? What does it return?
+[Solution]
+Malloc is a function that takes in an integer argument, reserving that number of bytes on the heap for future use. The function returns a pointer to the location on the heap that was reserved.
+
+[Question]
+What are the two methods you can use to figure out how much memory to allocate (if you don’t know the exact number)?
+[Solution]
+sizeof or strlen() if you are allocating space for a string
+
+[Question]
+Can malloc() return NULL? If so, when does it do so?
+[Solution]
+Yes, malloc() can return NULL. It is done so in the event of the function being unable to properly allocate the sufficient memory space, typically due to insufficient space on the heap
+
+[Question]
+What does free do? What does it take in? What does it return?
+[Solution]
+The free function un-reserves the chunk of memory on the heap that was previously reserved. It takes in a pointer to a location on the heap that is going to get freed. The function does not have a return type
+
+[Question]
+Why should you set a pointer to NULL after freeing it?
+[Solution]
+Because after freeing it, the pointer still points the chunk of memory on the heap it was assigned, but now it is no longer reserved, so a later malloc() call can use that chunk. By setting the pointer to NULL, we avoid reusing it.
+
+[Question]
+What is the difference between calloc and malloc?
+[Solution]
+calloc(int n, int s) and malloc(int s)
+Calloc takes in an extra parameter, so instead of allocating one chunk of size s on the heap like malloc, calloc will allocate n chunks of size s on the heap. Additionally, calloc will set all the bytes to 0
+
+[Question]
+What is wrong with the code segment below? How can it be fixed?
+
+#include <stdio.h>
+struct node { 
+int val;
+struct node *next 
+};
+
+struct node *alloc_a_struct() {
+struct node my_node = 0;
+ my_node.val = 42;
+ my_node.next = 0;
+         return &my_node;
+}
+[Solution]
+We are returning the address to a stack allocated variable, so after the function terminates, the created node will be deleted. To fix this issue, during the initialization of my_node we should call malloc(sizeof(struct node)).
+
+[Question]
+What marks the end of a singly linked list?
+[Solution]
+The next pointer for the node is NULL
+
+[Question]
+What is the difference between a forward growing and backward growing linked list?
+[Solution]
+For both structures, we keep track of the beginning of the list, the head.
+For a forward growing list, we keep track of an additional node, the tail. We assign the newly added node to tail -> next_ptr, then assign tail = tail -> next_ptr.
+For a backward growing list, we store the node to be added in a variable called temp. Assign temp -> next_ptr = head. Then assign head = temp.
+If the list we are adding to is empty, we assign the node to be added to head. Then for a forward growing list, we set tail = head.
+
+[Question]
+How do you traverse a singly linked list?
+[Solution]
+We create a temporary variable, assign head to it, then go go temp -> next, until we reach the end
+
+[Question]
+What is wrong with the code segment below?
+
+p = head;
+while (p != NULL) {
+free(p);
+ p = p->next_ptr;
+}
+[Solution]
+When we access p -> next_ptr, we are accessing deallocated memory, which will cause undefined behavior.
+
+[Question]
+Create a function called create_node that takes in an integer parameter and returns a pointer to a struct called node. Assume that the struct node has already been defined, and that it has two elements, an integer and a pointer to the next node.
+[Solution]
+struct node *create_node(int new_value) {
+struct node *temp = NULL;
+temp = malloc(sizeof(struct node));
+assert(temp != NULL);
+ temp->value = new_value;
+ temp->next_ptr = NULL;
+ return temp;
+}
+
+[Question]
+Given the following declaration:
+[Solution]
+typedef struct node {
+int val;
+struct node *next;
+} node;
+[a][b][c][d][e][f][g][h][i][j]
+
+[Question]
+Write a function with the following prototype: node *swap_with_next(node *, int);  This function accepts a pointer to the head of a singly-linked list and the value of a node that, when found, should swap positions with its next node.  Traverse the list and find the node whose value equals the second argument. If it does not exist, return NULL. Once found, swap its position with its next node. Return a pointer to the head of the list on success. Include asserts.
+[Solution]
+Answers may vary, put it into terminal and check it for all edge cases
+
+
+[Question]
+Implement the below function to prepend doubly linked list element to list_node. 
+[Solution]
+void prepend(struct double_l *element, struct double_l *list_node) {
+if (list->prev_ptr != NULL) 
+list_node->prev_ptr->next_ptr = element; 
+element->prev_ptr = list_node->prev_ptr; 
+element->next_ptr = list_node; 
+list_node->prev_ptr = element; 
+} 
+
+[Question]
+Implement the below function to remove a doubly-linked list node from anywhere within the list.
+
+void remove_double(struct double_l *ptr) {
+
+}
+[Solution]
+void remove_double(struct double_l *ptr) {
+if (ptr->next_ptr != NULL) 
+ptr->next_ptr->prev_ptr = ptr->prev_ptr; 
+if (ptr->prev_ptr != NULL) 
+ptr->prev_ptr->next_ptr = ptr->next_ptr; 
+ptr->next_ptr = NULL; 
+ptr->prev_ptr = NULL; 
+}
+
+
+[Question]
+Implement the below function to free a doubly-linked list node.
+
+void my_free(struct double_l **ptr_ptr) { 
+
+} 
+[Solution]
+void my_free(struct double_l **ptr_ptr) { 
+struct double_l *ptr = NULL; 
+assert(ptr_ptr != NULL); 
+
+ptr = *ptr_ptr; 
+free(ptr); 
+*ptr_ptr = NULL; 
+} 
+
+[Question]
+Implement the prepend function to take a double pointer to the head and set the head to the new head. 
+[Solution]
+Possible Solution:
+void prepend_to_head(struct item **head_ptr, struct item *new_item_ptr) {
+ assert(head_ptr != NULL);
+         new_item_ptr->prev_ptr = NULL;
+if (*head_ptr == NULL) {
+                 *head_ptr = new_item_ptr;
+         }
+         else {
+                 new_item_ptr->next_ptr = *head_ptr;
+                 (*head_ptr)->prev_ptr = new_item_ptr;
+                 *head_ptr = new_item_ptr;
+         }
+}
+
+
+
+[Question]
+What do you need in order to traverse a singly linked list, swap adjacent nodes in a list, and prepend a node before an arbitrary node?
+[Solution]
+You will need the head node.
+
+[Question]
+What is the difference between a doubly linked list and a singly linked list?
+[Solution]
+A doubly linked list node has the same properties as a singly linked list node, but it also has an additional pointer that keeps track of the preceding node
+
+[Question]
+What signifies the head and tail nodes in a doubly linked list?
+[Solution]
+The head node’s prev_ptr = NULL, and the tail’s next_ptr = NULL
+
+[Question]
+When would a pointer to a pointer be useful?
+[Solution]
+It is useful when you are making a function that will free a pointer and set it to NULL. We will need to use a pointer to a pointer since C is a pass by value language.
+It is also useful when editing linked lists, could pass in a pointer to a pointer which will be the head of the list. This makes it easier to change the head of the list should you need to change it.
+
+[Question]
+Can you assign a pointer of one type to a pointer of another type?
+[Solution]
+No.
+
+[Question]
+Is the following code segment valid? Will the two print statements print the same thing?
+
+#include <stdio.h>
+struct foo {
+  int x;
+};
+typedef struct foo foo_bar;
+
+int main() {
+  struct foo a = {9};
+  struct foo *ptrs = &a;
+  foo_bar [l]*ptr = &a;
+  printf(“%d\n”, ptrs -> x);
+  printf("%d\n", ptr -> x);
+}
+[Solution]
+Yes the code segment is valid, and the two print statements will print the same thing. This is because foo_bar is just a name that refers to the struct foo.
+
+[Question]
+What is the issue with the code segment below?
+
+int main(int argc, char **argv) {
+         int i = 0;
+int *pi = NULL;
+         int **ppi = NULL;
+pi = &i;
+ppi = &pi;
+i = 5;
+printf(“i is %d\n”, **ppi);
+pi = NULL;
+printf(“i is %d\n”, **ppi);
+return *pi;
+}
+[Solution]
+For the second print statement, we are trying to de-reference NULL, which will cause a segmentation fault.
+
+[Question]
+Should triple pointers be something you use often?
+[Solution]
+No, you should rarely ever need to use triple pointers.
+
+[Question]
+What’s wrong with the below code? What would fix it?
+
+struct info { 
+char *name; 
+char *address; 
+struct info *next_ptr; 
+};
+
+struct info *create_info(char *name, char *address) { 
+struct info *ptr = NULL; 
+ptr = malloc(sizeof(struct info)); 
+assert(ptr != NULL); 
+ptr->name = name; 
+ptr->address = address; 
+ptr->next_ptr = NULL; 
+return ptr; 
+}
+[Solution]
+The create_info() method doesn’t malloc for the name and address. The previous malloc call only allocated memory for the pointers to name and address, not what they point to.
+The code below must be added:
+ptr->name = malloc(strlen(name) + 1); 
+assert(ptr->name != NULL); 
+strcpy(ptr->name, name); 
+ptr->address = malloc(strlen(address) + 1); 
+assert(ptr->name != NULL); 
+strcpy(ptr->address, address);
+
+
+[Question]
+Implement the delete_info function below:
+
+struct info { 
+char *name; 
+char *address; 
+struct info *next_ptr; 
+};
+
+void delete_info(struct **info_ptr_ptr) {
+
+}
+[Solution]
+void delete_info(struct **info_ptr_ptr) { 
+assert(info_ptr_ptr != NULL); 
+assert(*info_ptr_ptr != NULL); 
+
+if ((*info_ptr_ptr)->name != NULL) { 
+free((*info_ptr_ptr)->name); 
+(*info_ptr_ptr)->name = NULL; 
+} 
+
+
+if ((*info_ptr_ptr)->address != NULL) { 
+free((*info_ptr_ptr)->address); 
+(*info_ptr_ptr)-> address = NULL; 
+} 
+
+
+(*info_ptr_ptr)->next_ptr = NULL; 
+free(*info_ptr_ptr);
+*info_ptr_ptr = NULL; 
+}
+
+[Question]
+Declare a pointer to a function called ptr_to_func that accepts two integers and returns an integer. Initialize the pointer to NULL.
+[Solution]
+Acceptable answers: 
+int (*ptr_to_func)(int, int) = NULL;
+int (*ptr_to_func)(int x, int y) = NULL;
+
+[Question]
+What is wrong with the function and how it is used? How can it be fixed?
+
+void my_close(FILE *file_ptr) {
+         fclose(file_ptr);
+         file_ptr = NULL;
+}
+
+int main() {
+         FILE *fp = NULL;
+         fp = fopen(“input”, “r”);
+         my_close(fp);
+         return (0);
+}
+[Solution]
+Since C is a pass-by-value language, when you call my_close, a copy of fp is passed in, not the actual pointer fp itself. So though the file was closed, fp was not set to NULL. To fix it, the argument file_ptr must be a pointer to a pointer, then you should call my_close(&fp).
+
+[Question]
+What is the difference between 0, 0.0, 0x0, ‘\0’, NUL, and NULL?
+[Solution]
+0, 0x0, and 0.0 all represent the value of the number 0. Only difference is 0 is an int, 0x0 is also an int but is in hex, and 0.0 is a floating point value.
+‘\0’ is a character, whose character code is NUL. 
+NULL is a void pointer, ((void *)0).
+
+[Question]
+Can you use 0 instead of 0.0? What about the other way around, 0.0 instead of 0?
+[Solution]
+The answer to both questions is yes. If using 0.0 for an int or 0 for a float/double, C will automatically modify the type of the value to the right type for us.
+
+[Question]
+What is the value of sizeof(0)? What is the value of sizeof(‘\0’)? What is the value of sizeof(0.0)?
+[Solution]
+4
+1
+8
+
+[Question]
+(T/F) You can use 0 instead of ‘\0’, NULL
+[Solution]
+True, but you should use the right types when assigning that way when you read the code it will be easier to understand.
+
+[Question]
+How are pointers to functions useful in searching a linked list?
+[Solution]
+Instead of having multiple functions that search the list based on the field, you can have one search function, passing in a compare function as a pointer argument.
+
+[Question]
+What is the difference between char *str = “Hello” , and char str[] = “Hello”
+[Solution]
+The first version of str allocates memory for the string “Hello” on the stack, and assigns the pointer to it to the variable str. The string is stored in read-only mode, meaning you cannot modify the string without changing the whole string itself.
+The second version of str creates an array on the stack and copies the contents of “Hello” into that array.
+
+[Question]
+If you do char *str = “Hello”, is the following statement valid?
+str = “Ponies”;
+[Solution]
+Yes
+
+[Question]
+If you do char *str = “Hello”, is the following statement valid?
+str[1] = ‘f’;
+[Solution]
+No this is not valid since str is stored in read-only mode. So you cannot modify str unless you set str = “Hfllo”
+
+
+[Question]
+What does this print?
+                
+        x = 0;
+        
+        if (x == 0) printf(“x1 = %d\n”, x);  
+if ((x = 0)) printf(“x2 = %d\n”, x);  
+if (x) printf(“x3 = %d\n”, x);
+[Solution]
+x1 = 0
+
+
+What does this print?
+
+int x = 0;
+int y = -1;
+
+if (x == 0) printf(“x1 = %d\n”, x);  
+if ((x = 10)) printf(“x2 = %d\n”, x);  
+if (x) printf(“x3 = %d\n”, x);
+if (x && y) printf(“x && y\n”);
+ 
+[Solution]
+x1 = 0
+x2 = 10
+x3 = 10
+x && y
+
+[Question]
+When does an if statement evaluate to True?
+[Solution]
+If the expression has a non-zero value.
+
+[Question]
+What is outputted for mystery(10)?
+
+void mystery(int n) { 
+if (n >= 0) { 
+printf(“%d”, n); 
+mystery(n-1); 
+} 
+return; 
+}
+
+[Solution]
+109876543210
+
+[Question]
+What is outputted for sussy(10)?
+
+void sussy(int n) { 
+if (n >= 0) { 
+        sussy(n-1); 
+printf(“%d”, n); 
+} 
+return; 
+}
+[Solution]
+012345678910
+
+[Question]
+What’s wrong with the below?
+
+char *create_string() { 
+char str[100]; 
+strcpy(str, “Hello, world\n”); 
+return str; 
+} 
+[Solution]
+Returning a pointer to a stack-allocated temporary variable.
+
+[Question]
+Implement a recursive factorial function.
+[Solution]
+int factorial(int n) {
+        if (n == 0) {
+                return 1;
+        }
+        return n * factorial(n - 1);
+}
+
+[Question]
+Is a recursive function more efficient than an iterative function?
+[Solution]
+No, often times the recursive function is less efficient than its iterative counterpart
+
+[Question]
+When a function calls itself, do the values of the local variables stay the same at the time of the call or do they reset to what they were initialized to?
+[Solution]
+The values will reset since C is pass-by-value. Once the recursive call terminates, all the values for that specific call will go away.
+
+
+[Question]
+What is the main reason a recursive function can segfault? Not accounting for potential NULL references.
+[Solution]
+It will segfault due to stack overflow, since each recursive call allocates more memory on the stack for each call. If we recurse too many times, we will run out of space on the stack.
+
+
+[Question]
+When adding a child node to the parent node, if the child is less than the parent, do we add it to the left or right node?
+[Solution]
+Left Node 
+
+
+[Question]
+When adding a child node to the parent node, if the child is greater than the parent, do we add it to the left or right node?
+[Solution]
+Right Node
+
+[Question]
+(T/F) A tree is sometimes not sorted
+[Solution]
+False, a tree is always sorted due to how we add child nodes to the parent
+
+[Question]
+(T/F) A tree is easily searchable
+[Solution]
+True, since it is already sorted
+
+[Question]
+If you are searching for a node in a tree, how do you know if it doesn’t exist?
+[Solution]
+If at any point the the pointer you are using to traverse the tree is NULL, that means the tree does not contain the values
+
+[Question]
+Implement the create_node function for a binary tree.
+[Solution]
+
+struct node *create_node(int value) { 
+struct node *ptr = NULL; 
+
+
+ptr = malloc(sizeof(struct node)); 
+assert(ptr != NULL); 
+
+
+ptr->left = NULL; 
+ptr->right = NULL;
+ptr->value = value; 
+
+
+return ptr; 
+}
+
+[Question]
+Implement an iterative function to insert a node in a sorted binary tree.
+[Solution]
+void insert_node(struct node *root, struct node *new) {
+  while (1) {
+    if (new->value <= root->value) {
+      if (root->left == NULL) {
+        root->left = new;
+        return;
+      }
+      else {
+        root = root->left;
+      }
+    }
+    else {
+      if (root->right == NULL) {
+        root->right = new;
+        return;
+      }
+      else {
+        root = root->right;
+      }
+    }
+  }
+}
+
+[Question]
+Implement the same function recursively.
+[Solution]
+void insert_node(struct node *root, struct node *new) {
+    if (new->value <= root->value) {
+      if (root->left == NULL) {
+        root->left = new;
+        return;
+      }
+      else {
+        insert_node(root->left, new);
+      }
+    }
+    else {
+      if (root->right == NULL) {
+        root->right = new;
+        return;
+      }
+      else {
+        insert_node(root->right, new);
+      }
+    }
+}
+
+
+[Question]
+Create a function tree_find that takes in a pointer to the parent node of a tree and an int value. The function should return the node that has the passed in value. If it does not exist in the tree, return NULL.
+[Solution]
+Possible Solution
+struct node *tree_find(struct node *root, int value) {
+         if (root == NULL) {
+                 return NULL; /* Not found */
+        }
+         if (value == root->value) {
+                 return root; /* Found it */
+        }
+         if (value < root->value) {  /* Go left */
+return tree_find(root->left, value);
+}
+         return tree_find(root->right, value);
+}
+
+
+
+[Question]
+What order should you iterate over a node for each tree traversal type?
+Ex: for least to greatest, access in the order Left-Node-Right.
+[Solution]
+Greatest to least: Right-Node-Left
+
+
+Prefix: Node-Left-Right
+
+
+Postfix: Left-Right-Node
+
+
+[Question]
+Implement a function to print a tree with inorder, greatest to least, prefix, postfix traversal.
+[Solution]
+void print_tree(struct node *ptr) {
+  if (ptr == NULL)
+    return;
+  print_tree(ptr->left); /* Go left */
+  printf(“%d\n”, ptr->value); /* Node */
+  print_tree(ptr->right); /* Go right *
+}
+
+
+[Question]
+How are the contents of this 2D array stored in memory?
+int array[3][4] = { { 1, 2, 3, 4}, 
+{ 5, 6, 7, 8}, 
+{ 9, 10, 11, 12 } };
+[Solution]
+ 1, 2, 3, 4, ,5, 6, 7, 8, 9, 10, 11, 12
+
+[Question]
+What must you know if you are creating a multi-dimensional array? What is the alternative if you do not know the required information?
+[Solution]
+Since we cannot change the size of an array after initializing it, we must know how much memory we need before we dynamically allocate memory for it.
+In the case we do not know the exact memory required, use a linked list or tree instead.
+
+[Question]
+Does the compiler know that an array is multidimensional?
+[Solution]
+No it does not, we must pointer arithmetic ourselves to properly traverse it as one.
+
+[Question]
+What does this do?
+
+        *((*(array + i)) + j)
+
+
+[Solution]
+gets the jth column and i’th row of array
+
+[Question]
+Does this work? If not fix it 
+
+        *(array + rows * i + j)
+
+[Solution] 
+no, but *(array + cols * i + j) does
+
+[Question]
+Does this work? If not fix it
+
+
+ (*(array + i))[j]
+
+[Solution]
+yes, it gets the ith 1 dimensional array of the 2 dimensional array and goes to the jth index.
+
+[Question]
+Does this work? If not fix it
+array[i] + j
+[Solution]
+no, it gets the pointer to the ith row array of “array” and goes j indexes from the head, but it still needs to dereference it. Adding a *(  ) around it makes it correct
+
+[Question]
+Use calloc to allocate and clear a 2d double array of size 3 x 4.
+[Solution]
+*array = NULL;
+        
+array = calloc(sizeof(double), 3 * 4);
+assert(array != NULL);
+
+
+Lecture 18: Types, type qualifiers, storage classes, C preprocessor
+
+[Question]
+sizeof(void)?
+[Solution]
+Not really defined, supposed to be nothing but is sometimes one byte. Probably
+don’t worry about it
+
+[Question]
+sizeof(char)?
+[Solution]
+1 byte
+
+[Question]
+sizeof(short)?
+[Solution]
+2 bytes
+
+[Question]
+sizeof(int)?
+[Solution]
+4 bytes
+
+[Question]
+sizeof(long)?
+[Solution]
+Usually 8 bytes, sometimes 4 bytes
+
+[Question]
+sizeof(long long)?
+[Solution]
+(gcc only) Usually 8 bytes 
+
+[Question]
+sizeof(float)?
+[Solution]
+4 bytes
+
+[Question]
+sizeof(double)?
+[Solution]
+8 bytes
+
+[Question]
+sizeof(void *)?
+[Solution]
+8 bytes
+
+[Question]
+How does C handle type promotion?
+[Solution] 
+Promoted to the next larger type of the same family (shorts to ints to longs, float to double, etc) within arithmetic operations
+
+[Question]
+Which line will cause an error? Why?
+        unsigned char x = 200;
+        signed char y = 200;
+[Solution]
+unsigned integer types are indicated as always positive, so they can hold a larger threshold of numbers. Therefore, signed char y = 200; will overflow. 
+
+[Question]
+What are second class types? Name 4 in C.
+[Solution]
+Second-class types are constructed types created by the programmer. Ex: struct, union, enum, or pointer to anything.
+
+[Question]
+When can you make an assignment between two different types? When can you not?
+[Solution]
+You can make an assignment between two different types if they are compatible first-class types(int and double/float). You cannot do so for second-class types
+
+[Question]
+What are the two type qualifiers that can be used with any type declaration?
+[Solution]
+const and volatile
+
+[Question]
+What do the two type qualifiers mean?
+[Solution]
+const: this datum must not be modified 
+volatile: this datum may be modified by something outside the program! (e.g. the hardware, another program, multi-threaded programs)
+
+[Question]
+Can you have a variable with both qualifiers?
+[Solution]
+No, a const cannot be a volatile and vice versa
+
+
+[Question]
+Explain what the following means:
+const int *ptr;        
+[Solution] 
+
+ptr points to an int whose value cannot be modified
+        
+[Question] 
+Explain what the following means:
+int * const ptr; 
+[Solution]
+ptr is an unmodifiable pointer that points to an integer whose value can be changed
+
+[Question] 
+Explain what the following means:
+const int * const ptr;
+[Solution]
+ptr is an unmodifiable pointer that points to an int whose value cannot be modified.
+
+[Question]
+Examine the function prototype for strcpy(). What is the significance of including const?
+char *strcpy(char *dest, const char *src);  
+[Solution]
+The const is a guarantee made by the author of strcpy() that the string passed in will not be modified, and that the string passed through src doesn’t have to be defined as const.
+
+[Question]
+What does the extern storage class mean?
+[Solution]
+It means that the data in the storage class is defined in another module
+
+[Question]
+Given a pointer p to a structure that contains an integer, x, write an equivalent line of code that does not use the array operator ->.
+[Solution] 
+printf(“Value: %d\n”, (*p).x);
+
+[Question]
+Given the code below, what is printed to the screen?
+
+int i = 2;
+int j = 4;
+int *p = &i;
+int **pptr = &p;
+*pptr = &j;
+printf(“*p = %d\n”, *p);
+
+[Solution] 
+*p = 4
+
+
+[Question]
+Given a singly-linked list composed of type struct node, write a function named delete_list() that accepts a single argument that is the address of the pointer to the head of a list of the aforementioned type. This function should deallocate all nodes in the list and set the head to NULL.
+[Solution]
+void delete_list(struct node **head) {
+  assert(head != NULL);
+  assert(*head != NULL);
+  struct node *next = NULL;
+
+  while (*head != NULL) {
+    if ((*head)->next != NULL) {
+      next = *head->next;
+    }
+    else {
+      next = NULL;
+    }
+    free(*head);
+    *head = next;
+  }
+  *head = NULL;
+}
+
+[Question]
+Define a variable named fun, which is an unmodifiable pointer to an integer. Note that the integer should be mutable.
+[Solution]
+int * const fun = 0;
+
+[Question]
+Describe the two purposes that the static keyword can serve.  
+[Solution]
+For local variables it means that the static variable retains values between function calls. For global variables or functions, it means that they are only visible within the module; it restricts scope.
+
+[Question]
+Declare and typedef an enumerated type named food_group_t that can be one of the following values: FRUIT, VEGETABLE, DAIRY, SWEET, and STARCH.
+[Solution]
+typedef enum food_group_t {
+  FRUIT,
+  VEGETABLE,
+  PROTEIN,
+  DAIRY,
+  SWEET,
+  STARCH
+} food_group_t;
