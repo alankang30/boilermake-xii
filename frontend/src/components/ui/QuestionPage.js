@@ -26,6 +26,14 @@ function QuestionAnswerPage(props) {
         <p>Topic: {question.topic}</p>
         <p>Difficulty: {question.difficulty}</p>
         <h2>{question.question_statement}</h2>
+        {/* conditionally render image if it exists */}
+        {question.image !== "filename" && (
+          <img 
+            src={`http://127.0.0.1:5000/uploads/${question.image}`} 
+            alt="Question" 
+            style={{ width: "200px", height: "auto" }} 
+          />
+        )}
         <button onClick={() => setShowAnswer(!showAnswer)}>Show Answer</button>
         {showAnswer && <p className={classes.answer}>{question.answer}</p>}
         <button className={classes.backButton} onClick={() => navigate(-1)}>
