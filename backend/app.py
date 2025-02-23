@@ -139,12 +139,11 @@ def search():
     # dummy response (replace with actual)
     results = get_questions_by_id(filtered_data[id_num]["id"] for id_num in ids); 
 
-    if (len(tokens) < 1):
-        return jsonify(results)
-
-
     if not results:
         results = get_questions_by_class(class_name)
+
+    if (len(tokens) < 1):
+        return jsonify(results)
 
     return jsonify(results)
 
