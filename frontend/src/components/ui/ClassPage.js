@@ -39,8 +39,6 @@ function ClassPage(props) {
     // const data = await response.json();
     // console.log(data);  // Handle response from Flask
     setSearchQuery(query); 
-
-    // Clear the input field after sending the request
   };  
 
   // Function to filter questions based on selected criteria

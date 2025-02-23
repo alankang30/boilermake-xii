@@ -98,23 +98,31 @@ def fetch_questions():
 @app.route('/search', methods=["GET", "POST"])
 def search():
     data = request.get_json()  # Get JSON data from request
-    print(data)
+
     query = data.get("searchQuery")
     filtered_data = data.get("filtered")
+
+    if not query:
+        return filtered_data
+
+    tokens = tokenize_sentence(query) 
+
 
     # this will always be the same throughout every search call
     class_name = filtered_data[0]["class_name"]
 
     ids = semantic_search(query, filtered_data)
-    print(ids)
 
     # dummy response (replace with actual)
-    results = get_questions_by_id(ids); 
+    results = get_questions_by_id(filtered_data[id_num]["id"] for id_num in ids); 
+
+    if (len(tokens) < 1):
+        return jsonify(results)
+
 
     if not results:
         results = get_questions_by_class(class_name)
 
-    print(results)
     return jsonify(results)
 
 @app.route('/')
@@ -161,7 +169,7 @@ def start_terminal():
 
     def read_output():
         while True:
-            readable, _, _ = select.select([fd], [], [], 0.1)
+            readable, _, _  = select.select([fd], [], [], 0.1)
             if readable:
                 try:
                     output = os.read(fd, 1024).decode()
@@ -169,7 +177,7 @@ def start_terminal():
                 except OSError:
                     break
         process.wait()
-        del processes[fd]
+        del processes[fd]        
     with app.app_context():
         eventlet.spawn(read_output)
 

@@ -46,8 +46,11 @@ def tokenize_sentence(sentence):
 
 def semantic_search(keywords, data):
 
+
     # queries will be based on this 
-    questions = [d['question_statement'] + "\n" + d['answer'] for d in data]
+    questions = [d["question_statement"] +" "+ d["answer"] +" "+ d["topic"]  for d in data]
+
+    print(questions)
 
     # this will be an array of tokens for each question in the database 
     tokens = [ [] for i in range(len(questions)) ]
@@ -58,6 +61,8 @@ def semantic_search(keywords, data):
             tokens[i].extend(tokenize_sentence(des_sent))
 
     dictionary = corpora.Dictionary(tokens)
+    print("tokens")
+    print(tokens)
 
     corpus = [dictionary.doc2bow(desc) for desc in tokens]
     word_frequencies = [[(dictionary[id], frequency) for id, frequency in line] for line in corpus[0:3]]
@@ -75,7 +80,8 @@ def semantic_search(keywords, data):
 
     query_bow = dictionary.doc2bow(tokenize_sentence(keywords))
 
-    if query_bow and len(keywords.split()) > 1: 
+
+    if query_bow and len(keywords.split()) >= 1: 
         print("advanced search happening")
         query_tfidf = des_tfidf_model[query_bow]
         query_lsi = des_lsi_model[query_tfidf]
@@ -91,12 +97,12 @@ def semantic_search(keywords, data):
 
         refined_des_list.sort(key=operator.itemgetter(1), reverse=True)
 
-        ids = [ des[0]+1 for des in refined_des_list]
+        ids = [ des[0] for des in refined_des_list]
 
         search_results = [] 
 
         return ids; 
-    return [] 
+    return []
 
 
 entries = [

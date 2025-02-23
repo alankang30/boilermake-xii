@@ -50,8 +50,6 @@ print(question_data)
 
 
 # # Print results
-# for qa in qa_data:
-# #     print(f"Q: {qa['question']}\nA: {qa['answer']}\n")
 
 
 # # Writing to CSV

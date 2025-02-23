@@ -43,12 +43,23 @@ def get_question_by_id(question_id):
 def get_questions_by_id(question_ids):
     '''Input is a list of ids and will return a list of questions'''
     conn = get_db()
+    print("getting questions by id")
     cur = conn.cursor()
-    query = f"SELECT * FROM questions WHERE id IN ({','.join(['?'] * len(question_ids))})"
-    cur.execute(query, question_ids)
-    rows = cur.fetchall()
+    rows = [] 
+    for id in question_ids:
+        print(id)
+        cur.execute("SELECT * FROM questions WHERE id = ?", (id,))
+        question = cur.fetchone()
+        rows.append(question)
+    print(rows)
     conn.close()
-    return [dict(q) for q in rows]
+
+    ret = []
+
+    for q in rows:
+        if q:
+            ret.append(dict(q))
+    return ret
 
 def get_questions_by_class(class_name):
     conn = get_db()
